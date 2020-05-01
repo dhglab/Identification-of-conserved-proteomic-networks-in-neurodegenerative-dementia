@@ -7,6 +7,16 @@ targets.MSSM$Diagnosis[targets.MSSM$Diagnosis==1] <- 'AD.poss'
 targets.MSSM$Diagnosis[targets.MSSM$Diagnosis==2] <- 'AD.pro'
 targets.MSSM$Diagnosis[targets.MSSM$Diagnosis==3] <- 'AD.def'
 
+#make ApoE4 as dosage
+targets.BLSA$ApoE4 = targets.BLSA$ApoE
+targets.BLSA$ApoE4[targets.BLSA$ApoE4==-1]=0
+targets.Mayo$ApoE4=0
+targets.Mayo$ApoE4[targets.Mayo$ApoE=='e24' | targets.Mayo$ApoE=='e34']=1
+targets.Mayo$ApoE4[targets.Mayo$ApoE=='e44']=2
+targets.Banner$ApoE4=0
+targets.Banner$ApoE4[targets.Banner$ApoE=='e24' | targets.Banner$ApoE=='e34']=1
+targets.Banner$ApoE4[targets.Banner$ApoE=='e44']=2
+
 #order plotting so largest module will be plotted first
 modorder=names(sort(table(geneInfo.cons$moduleColor.cons),decreasing=T))
 memodorder=paste0('ME',modorder)
